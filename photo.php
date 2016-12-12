@@ -272,8 +272,36 @@ require_once 'config.php';
 									</div>
 								</div> 
 							</div>
-							
-
+							<div class="title">
+								<h3>Ты снимаешь концерты и хочешь набрать опыта на нашем выступлении? — Оставь заявку.</h3>
+							</div>
+							<div class="zayavka_form">
+								<form class="form-horizontal" role="form">
+							  <div class="form-group">
+								<label for="inputName" class="col-sm-2 control-label">ФИО</label>
+								<div class="col-sm-10">
+								  <input type="text" class="form-control" id="inputName" placeholder="ФИО">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label for="inputTel" class="col-sm-2 control-label">Телефон</label>
+								<div class="col-sm-10">
+								  <input type="text" class="form-control" id="inputTel" placeholder="Телефон">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Твоя страница</label>
+								<div class="col-sm-10">
+								  <input type="email" class="form-control" id="inputEmail3" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<div class="col-sm-offset-2 col-sm-8">
+								  <button type="submit" class="btn btn-default">Отправить</button>
+								</div>
+							  </div>
+							</form>
+							</div>
 						
 					</div>
 				</div>

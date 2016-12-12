@@ -10,65 +10,48 @@ require_once 'config.php';
 		<meta charset="utf-8"/>
 		<title>Освобождение</title>
 			
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link rel="stylesheet" media="all" href="css/style.css"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->		
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" media="all" href="css/style.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->		
+			
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 		
-	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	
-	<!-- JS-->
-	<script src="js/jquery-1.6.4.min.js"></script>
-	<script src="js/css3-mediaqueries.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/tabs.js"></script>
-	
-	<!-- superfish -->
-	<link rel="stylesheet" media="screen" href="css/superfish.css" /> 
-	<script  src="js/superfish-1.4.8/js/hoverIntent.js"></script>
-	<script  src="js/superfish-1.4.8/js/superfish.js"></script>
-	<script  src="js/superfish-1.4.8/js/supersubs.js"></script>
-	<!-- ENDS superfish -->
+		<!-- JS-->
+		<script src="js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/tabs.js"></script>
 		
-	<!-- prettyPhoto -->
-	<script  src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
-	<link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css"  media="screen" />
-	<!-- ENDS prettyPhoto -->
+		<!-- superfish -->
+		<link rel="stylesheet" media="screen" href="css/superfish.css" /> 
+		<script  src="js/superfish-1.4.8/js/hoverIntent.js"></script>
+		<script  src="js/superfish-1.4.8/js/superfish.js"></script>
+		<script  src="js/superfish-1.4.8/js/supersubs.js"></script>
+		<!-- ENDS superfish -->
+			
+		<!-- GOOGLE FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<!-- END GOOGLE FONTS -->
 		
-	<!-- poshytip -->
-	<link rel="stylesheet" href="js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />
-	<link rel="stylesheet" href="js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />
-	<script  src="js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
-	<!-- ENDS poshytip -->
+		<!-- Less framework -->
+		<link rel="stylesheet" media="all" href="css/lessframework.css"/>
 		
-	<!-- GOOGLE FONTS -->
-	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<!-- modernizr -->
+		<script src="js/modernizr.js"></script>
+			
+		<!-- SKIN -->
+		<link rel="stylesheet" media="all" href="css/skin.css"/>
 		
-	<!-- Flex Slider -->
-	<link rel="stylesheet" href="css/flexslider.css" >
-	<script src="js/jquery.flexslider-min.js"></script>
-	<!-- ENDS Flex Slider -->
-	
-	
-	<!-- Less framework -->
-	<link rel="stylesheet" media="all" href="css/lessframework.css"/>
-	
-	<!-- modernizr -->
-	<script src="js/modernizr.js"></script>
-		
-	<!-- SKIN -->
-	<link rel="stylesheet" media="all" href="css/skin.css"/>
-		
-
-	
 	</head>
 	
 	<body lang="ru">
-	
+		
 		<header>
 			<div class="wrapper clearfix">
 					<div class="row">
@@ -190,11 +173,22 @@ require_once 'config.php';
 										</div>
 									</div>
 									<div class="col-xs-12 col-md-12">
-										<div class="music">
-											<p><span class="number">1.</span>Авторская программа в электричестве: продолжительность 1 час 40 минут (24 трека).</p>
-											<p><span class="number">2.</span>Авторская программа в акустике: продолжительность 1 час/ 1 час 20 минут.</p>
-											<p><span class="number">3.</span><a href="https://docs.google.com/document/d/12aEJ7F_ma2Bx4pIltY5FxWK0kdlnUSex4ScdFtGj86g/edit">Кавер-программа</a> в акустике: 3 сета по 45 минут в исполнении Александра Владыки: песни собственного сочинения, песни Виктора Цоя и группы КИНО, НАУ, ДДТ, АукцЫон, 5’nizza, Агата Кристи, СПЛИН, песни Алексея Костюшкина и группы «Коридорк», Машина времени, Воскресение, БГ, Чайф, песни на стихи С.Есенина, И.Бродского (всего более 130 треков).</p>
+										<div class="col-xs-12 col-md-4">
+											<div  class="icon_music" data-title="Авторская программа в электричестве: продолжительность 1 час 40 минут (24 трека).">
+												<img src="img/rock.png"/>
+											</div>
 										</div>
+										<div class="col-xs-12 col-md-4">
+											<div class="icon_music" data-title="Авторская программа в акустике: продолжительность 1 час/ 1 час 20 минут.">
+												<img src="img/acustic.png" />
+											 </div>
+										</div>
+										<div class="col-xs-12 col-md-4">
+											<div class="icon_music" data-title="Кавер-программа в акустике: 3 сета по 45 минут в исполнении Александра Владыки: песни собственного сочинения, песни Виктора Цоя и группы КИНО, НАУ, ДДТ, АукцЫон, 5’nizza, Агата Кристи, СПЛИН, песни Алексея Костюшкина и группы «Коридорк», Машина времени, Воскресение, БГ, Чайф, песни на стихи С.Есенина, И.Бродского (всего более 130 треков).">
+												<img src="img/microfone.png" />
+											 </div>
+										</div>
+										
 									</div>
 								</div>
 								<div class="row">
@@ -270,7 +264,7 @@ require_once 'config.php';
 			<script src="js/moment.js"></script>
 			<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
 			
-			
+		 
 	</body>
 	
 </html>

@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 require_once 'config.php';
 ?>
 <!doctype html>
@@ -144,10 +144,10 @@ require_once 'config.php';
 							</div>
 							<div class="excerpt">
 								<p>
-									Мы продали уже половину билетов, друзья 😊
+									Мы продали уже половину билетов, друзья ??
 									Спешите приобрести себе и друзьям на мега-рок-шоу II тура Фестиваля Emergenza 2016/2017
 
-									10 столичных команд — сотни зрителей и фанатов — вы решите, кто пройдёт в финал путём бесплатного голосования прямо из зала 😃
+									10 столичных команд — сотни зрителей и фанатов — вы решите, кто пройдёт в финал путём бесплатного голосования прямо из зала ??
 
 									#Освобождение выступит в 20:00 — 20:30 и после приглашает всех, кто приедет нас поддержать на after-party в Бутылка, Кружка и Котел, где мы пообщаемся и отлично проведём субботний вечер.
 
@@ -158,42 +158,74 @@ require_once 'config.php';
 									#EMERGENZA #afisha #kudago #kudagomsk #music #rock #rockmusic #rockstars #Moscow #русскийрок #рок #рокфестиваль #рокфест #рокконцерт #рокхаус #клуб #суббота #роквечеринка #аfterparty
 								</p>
 							</div>
-						
 						</article>
-						<article>
-							<div class="entry-date">
-								<div class="number">22</div>
-								<div class="month">Ноября</div> 
-								<div class="year">2016</div><em></em>
-							</div>
-							<div  class="post-heading">
-								<h4><a href="">Название новости  </a></h4>
-								<div class="meta">
-									<span class="user"><a href="#">Александр Владыка, </a></span>
-									<span class="comments"><a href="#">5 коментариев </a></span>
+						<div class="title">
+							<h3>Отправить комментарий</h3>
+						</div>
+						<div class="comment_form">
+							<form class="form-horizontal" role="form" method="post" action="aboutnews.php">
+							  <div class="form-group">
+								<label for="inputName" class="col-sm-2 control-label">Имя</label>
+								<div class="col-sm-10">
+								  <input name="name" type="text" class="form-control" id="inputName" placeholder="Ваше имя">
 								</div>
-							</div>
-							<div class="feature-image">
-									<img src="img/slides/01.jpg" alt="Alt text" />
-							</div>
-							<div class="excerpt">
-								<p>
-									Мы продали уже половину билетов, друзья 😊
-									Спешите приобрести себе и друзьям на мега-рок-шоу II тура Фестиваля Emergenza 2016/2017
+							  </div>
+							  <div class="form-group">
+							  <label for="inputComment" class="col-sm-2 control-label">Комментарий</label>
+								<div class="col-sm-10">
+									<textarea name="comment" class="form-control" rows="3" placeholder="Ваш комментарий"></textarea>
+								</div>
+							  </div>
+							  <div class="form-group">
+								<div class="col-sm-offset-2 col-sm-8">
+								  <button type="submit" class="btn btn-default">Отправить</button>
+								</div>
+							  </div>
+							</form>
+						</div>
+						<?php 
+							//Вставить запись в базу данных
+							if($_SERVER['REQUEST_METHOD'] == 'POST'){
+								$name = $_POST['name'];
+								$comment = $_POST['comment'];
 
-									10 столичных команд — сотни зрителей и фанатов — вы решите, кто пройдёт в финал путём бесплатного голосования прямо из зала 😃
+								$insert = "INSERT INTO comment (name, comment) VALUES ('$name', '$comment')";
+								mysqli_query($db, $insert) or die(mysqli_error($db));
+							    
+							
+							}
+						?>
+						<div class="title">
+							<h3>Комментарии</h3>
+						</div>
+						<div class="row">
+							<?php
+								//Вывод записи из базы данных
+								$select = "SELECT id, name, comment FROM comment ORDER BY `id` DESC LIMIT 0,10";
+								$result = mysqli_query($db, $select) or die(mysqli_error($db));
 
-									#Освобождение выступит в 20:00 — 20:30 и после приглашает всех, кто приедет нас поддержать на after-party в Бутылка, Кружка и Котел, где мы пообщаемся и отлично проведём субботний вечер.
+								echo "<div class=\"user_comment\">";
+									while($row = mysqli_fetch_assoc($result)){
+										$name = $row['name'];
+										$comment = $row['comment'];
 
-									До встречи 10 декабря в клубе ROCK HOUSE | РОК ХАУС
-
-									Билеты со скидкой — у членов группы и на сайте: https://radario.ru/widgets/mobile/90888?roundtripData..
-
-									#EMERGENZA #afisha #kudago #kudagomsk #music #rock #rockmusic #rockstars #Moscow #русскийрок #рок #рокфестиваль #рокфест #рокконцерт #рокхаус #клуб #суббота #роквечеринка #аfterparty
-								</p>
-							</div>
-						
-						</article>
+										echo '
+											<div class="col-xs-12 col-md-4">
+											
+											</div>
+											<div class="col-xs-12 col-md-8">
+												<div class="col-xs-12 col-md-12">
+													<h4>'.$name.'</h4>
+												</div>
+												<div class="col-xs-12 col-md-12">
+													<p>'.$comment.'</p>
+												</div>
+											</div>
+										';
+									}
+								echo "</div>";
+							?>
+						</div>
 					</div>
 				</div>
 			</div>
