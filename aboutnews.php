@@ -126,44 +126,55 @@ require_once 'config.php';
 				
 	        	<div class="home-block clearfix" >
 	        		<div  id="posts-list" class="clearfix" >
-						<article>
-							<div class="entry-date">
-								<div class="number">22</div>
-								<div class="month">Ноября</div> 
-								<div class="year">2016</div><em></em>
-							</div>
-							<div  class="post-heading">
-								<h4><a href="aboutnews.php">Название новости  </a></h4>
-								<div class="meta">
-									<span class="user"><a href="#">Александр Владыка, </a></span>
-									<span class="comments"><a href="#">5 коментариев </a></span>
-								</div>
-							</div>
-							<div class="feature-image">
-									<img src="img/slides/01.jpg" alt="Alt text" />
-							</div>
-							<div class="excerpt">
-								<p>
-									Мы продали уже половину билетов, друзья ??
-									Спешите приобрести себе и друзьям на мега-рок-шоу II тура Фестиваля Emergenza 2016/2017
+						<?php
+						$i = 0;
+								//Вывод записи из базы данных
+								$id_news = $_GET["id_news"];
+								$select = "SELECT id, date_news, title_news, author_news, img_news, description_news, text_news FROM news WHERE id=".$id_news;
+								$result = mysqli_query($db, $select) or die(mysqli_error($db));
+								
 
-									10 столичных команд — сотни зрителей и фанатов — вы решите, кто пройдёт в финал путём бесплатного голосования прямо из зала ??
+								echo "<div class=\"aboutnews_article\">";
+									while($row = mysqli_fetch_assoc($result)){
+										$id = $row['id'];
+										$date_news = $row['date_news'];
+										$title_news = $row['title_news'];
+										$author_news = $row['author_news'];
+										$img_news = $row['img_news'];
+										$description_news = $row['description_news'];
+										$text_news = $row['text_news'];
 
-									#Освобождение выступит в 20:00 — 20:30 и после приглашает всех, кто приедет нас поддержать на after-party в Бутылка, Кружка и Котел, где мы пообщаемся и отлично проведём субботний вечер.
-
-									До встречи 10 декабря в клубе ROCK HOUSE | РОК ХАУС
-
-									Билеты со скидкой — у членов группы и на сайте: https://radario.ru/widgets/mobile/90888?roundtripData..
-
-									#EMERGENZA #afisha #kudago #kudagomsk #music #rock #rockmusic #rockstars #Moscow #русскийрок #рок #рокфестиваль #рокфест #рокконцерт #рокхаус #клуб #суббота #роквечеринка #аfterparty
-								</p>
-							</div>
-						</article>
+										echo '
+											<article>
+												<div class="entry-date">
+													<div class="month">'.$date_news.'</div>
+												</div>
+												<div  class="post-heading">
+													<h4><a href="aboutnews.php">'.$title_news.'</a></h4>
+													<div class="meta">
+														<span class="user"><a href="#">'.$author_news.', </a></span>
+														<span class="comments"><a href="#"> 2 коментариев </a></span>
+													</div>
+												</div>
+												<div class="feature-image">
+														<img src="'.$img_news.'" alt="Alt text" />
+												</div>
+												<div class="excerpt">
+													<p>
+														'.$text_news.'
+													</p>
+												</div>
+												<a href="news.php">Вернуться к списку новостей</a>
+										    </article>
+										';
+									}
+								echo "</div>";
+							?>
 						<div class="title">
 							<h3>Отправить комментарий</h3>
 						</div>
 						<div class="comment_form">
-							<form class="form-horizontal" role="form" method="post" action="aboutnews.php">
+							<form class="form-horizontal" role="form" method="post" action="comment_save.php">
 							  <div class="form-group">
 								<label for="inputName" class="col-sm-2 control-label">Имя</label>
 								<div class="col-sm-10">
@@ -176,6 +187,7 @@ require_once 'config.php';
 									<textarea name="comment" class="form-control" rows="3" placeholder="Ваш комментарий"></textarea>
 								</div>
 							  </div>
+							  <input type="hidden" name="id_news" value="<?php echo $id_news;?>">
 							  <div class="form-group">
 								<div class="col-sm-offset-2 col-sm-8">
 								  <button type="submit" class="btn btn-default">Отправить</button>
@@ -183,29 +195,19 @@ require_once 'config.php';
 							  </div>
 							</form>
 						</div>
-						<?php 
-							//Вставить запись в базу данных
-							if($_SERVER['REQUEST_METHOD'] == 'POST'){
-								$name = $_POST['name'];
-								$comment = $_POST['comment'];
-
-								$insert = "INSERT INTO comment (name, comment) VALUES ('$name', '$comment')";
-								mysqli_query($db, $insert) or die(mysqli_error($db));
-							    
-							
-							}
-						?>
 						<div class="title">
 							<h3>Комментарии</h3>
 						</div>
 						<div class="row">
 							<?php
 								//Вывод записи из базы данных
-								$select = "SELECT id, name, comment FROM comment ORDER BY `id` DESC LIMIT 0,10";
-								$result = mysqli_query($db, $select) or die(mysqli_error($db));
-
+								$select_comment = "SELECT id, name, comment, id_news FROM comment  WHERE id_news=".$id_news." ORDER BY `id` DESC LIMIT 0,10";
+								$result_comment = mysqli_query($db, $select_comment) or die(mysqli_error($db));
+								
+								
 								echo "<div class=\"user_comment\">";
-									while($row = mysqli_fetch_assoc($result)){
+									while($row = mysqli_fetch_assoc($result_comment)){
+										$i++;
 										$name = $row['name'];
 										$comment = $row['comment'];
 
@@ -222,7 +224,9 @@ require_once 'config.php';
 												</div>
 											</div>
 										';
+										
 									}
+									
 								echo "</div>";
 							?>
 						</div>
@@ -241,7 +245,19 @@ require_once 'config.php';
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">Все права защищены</div>
+					<div class="left">
+						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
+						<ul>
+							<li>vk.com/avladyka</li> 
+							<li>facebook.com/iavladyka</li> 
+							<li>avladyka@bk.ru</li>
+						</ul>
+						<p>Над сайтом работали:</p>
+						<ul>
+							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
+							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
+						</ul>
+					</div>
 					<div class="right">
 						<ul id="social-bar">
 							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>

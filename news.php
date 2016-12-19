@@ -126,74 +126,49 @@ require_once 'config.php';
 				
 	        	<div class="home-block clearfix" >
 	        		<div  id="posts-list" class="clearfix" >
-						<article>
-							<div class="entry-date">
-								<div class="number">22</div>
-								<div class="month">Ноября</div> 
-								<div class="year">2016</div><em></em>
-							</div>
-							<div  class="post-heading">
-								<h4><a href="aboutnews.php">Название новости  </a></h4>
-								<div class="meta">
-									<span class="user"><a href="#">Александр Владыка, </a></span>
-									<span class="comments"><a href="#">5 коментариев </a></span>
-								</div>
-							</div>
-							<div class="feature-image">
-									<img src="img/slides/01.jpg" alt="Alt text" />
-							</div>
-							<div class="excerpt">
-								<p>
-									Мы продали уже половину билетов, друзья 😊
-									Спешите приобрести себе и друзьям на мега-рок-шоу II тура Фестиваля Emergenza 2016/2017
+					<?php
+								//Вывод записи из базы данных
+								$select = "SELECT id, date_news, title_news, author_news, img_news, description_news, text_news FROM news ORDER BY `id` DESC LIMIT 0,10";
+								$result = mysqli_query($db, $select) or die(mysqli_error($db));
 
-									10 столичных команд — сотни зрителей и фанатов — вы решите, кто пройдёт в финал путём бесплатного голосования прямо из зала 😃
+								echo "<div class=\"news_article\">";
+									while($row = mysqli_fetch_assoc($result)){
+										$id = $row['id'];
+										$date_news = $row['date_news'];
+										$title_news = $row['title_news'];
+										$author_news = $row['author_news'];
+										$img_news = $row['img_news'];
+										$description_news = $row['description_news'];
+										$text_news = $row['text_news'];
 
-									#Освобождение выступит в 20:00 — 20:30 и после приглашает всех, кто приедет нас поддержать на after-party в Бутылка, Кружка и Котел, где мы пообщаемся и отлично проведём субботний вечер.
-
-									До встречи 10 декабря в клубе ROCK HOUSE | РОК ХАУС
-
-									Билеты со скидкой — у членов группы и на сайте: https://radario.ru/widgets/mobile/90888?roundtripData..
-
-									#EMERGENZA #afisha #kudago #kudagomsk #music #rock #rockmusic #rockstars #Moscow #русскийрок #рок #рокфестиваль #рокфест #рокконцерт #рокхаус #клуб #суббота #роквечеринка #аfterparty
-								</p>
-							</div>
-						
-						</article>
-						<article>
-							<div class="entry-date">
-								<div class="number">22</div>
-								<div class="month">Ноября</div> 
-								<div class="year">2016</div><em></em>
-							</div>
-							<div  class="post-heading">
-								<h4><a href="">Название новости  </a></h4>
-								<div class="meta">
-									<span class="user"><a href="#">Александр Владыка, </a></span>
-									<span class="comments"><a href="#">5 коментариев </a></span>
-								</div>
-							</div>
-							<div class="feature-image">
-									<img src="img/slides/01.jpg" alt="Alt text" />
-							</div>
-							<div class="excerpt">
-								<p>
-									Мы продали уже половину билетов, друзья 😊
-									Спешите приобрести себе и друзьям на мега-рок-шоу II тура Фестиваля Emergenza 2016/2017
-
-									10 столичных команд — сотни зрителей и фанатов — вы решите, кто пройдёт в финал путём бесплатного голосования прямо из зала 😃
-
-									#Освобождение выступит в 20:00 — 20:30 и после приглашает всех, кто приедет нас поддержать на after-party в Бутылка, Кружка и Котел, где мы пообщаемся и отлично проведём субботний вечер.
-
-									До встречи 10 декабря в клубе ROCK HOUSE | РОК ХАУС
-
-									Билеты со скидкой — у членов группы и на сайте: https://radario.ru/widgets/mobile/90888?roundtripData..
-
-									#EMERGENZA #afisha #kudago #kudagomsk #music #rock #rockmusic #rockstars #Moscow #русскийрок #рок #рокфестиваль #рокфест #рокконцерт #рокхаус #клуб #суббота #роквечеринка #аfterparty
-								</p>
-							</div>
-						
-						</article>
+										echo '
+											<article>
+												<div class="entry-date">
+													<div class="month">'.$date_news.'</div>
+												</div>
+												<div  class="post-heading">
+													<h4>'.$title_news.'</h4>
+													<div class="meta">
+														<span class="user">'.$author_news.',</span>
+														<span class="comments">5 коментариев </span>
+													</div>
+												</div>
+												<div class="feature-image">
+														<img src="'.$img_news.'" alt="Alt text" />
+												</div>
+												<div class="excerpt">
+													<p>
+														'.$description_news.'
+													</p>
+												</div>
+												<div class="title">
+													<a href="aboutnews.php?id_news='.$id.'">Подробнее</a>
+												</div>
+										    </article>
+										';
+									}
+								echo "</div>";
+							?>
 					</div>
 				</div>
 			</div>
@@ -209,7 +184,19 @@ require_once 'config.php';
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">Все права защищены</div>
+					<div class="left">
+						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
+						<ul>
+							<li>vk.com/avladyka</li> 
+							<li>facebook.com/iavladyka</li> 
+							<li>avladyka@bk.ru</li>
+						</ul>
+						<p>Над сайтом работали:</p>
+						<ul>
+							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
+							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
+						</ul>
+					</div>
 					<div class="right">
 						<ul id="social-bar">
 							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>

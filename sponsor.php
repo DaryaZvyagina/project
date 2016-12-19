@@ -138,7 +138,7 @@ require_once 'config.php';
 											<img src="img/safonov.jpg" alt="safonov" class="safonov"/>
 										</div>
 										<div class="sponsor_title">
-											<h5>Василий Сафонов - официальный фотограф группы, CANON 5d mark 3  (+7 196 007 3873, lutearishi@gmail.com)</h5>
+											<h5>Василий Сафонов - фотограф группы (+7 196 007 3873, lutearishi@gmail.com)</h5>
 										</div>
 									</div>
 									<div class="col-xs-12 col-md-3">
@@ -146,7 +146,7 @@ require_once 'config.php';
 											<img src="img/kislyakova.jpg" alt="kislyakova" class="kislyakova"/>
 										</div>
 										<div class="sponsor_title">
-											<h5>Василиса Кислякова - видеограф группы (https://www.facebook.com/Sssiamsa?fref=ts)</h5>
+											<h5>Василиса Кислякова - видеограф группы <a href="https://www.facebook.com/Sssiamsa?fref=ts)">( страничка Facebook)</a></h5>
 										</div>
 									</div>
 									<div class="col-xs-12 col-md-3">
@@ -241,7 +241,19 @@ require_once 'config.php';
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">Все права защищены</div>
+					<div class="left">
+						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
+						<ul>
+							<li>vk.com/avladyka</li> 
+							<li>facebook.com/iavladyka</li> 
+							<li>avladyka@bk.ru</li>
+						</ul>
+						<p>Над сайтом работали:</p>
+						<ul>
+							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
+							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
+						</ul>
+					</div>
 					<div class="right">
 						<ul id="social-bar">
 							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>

@@ -11,30 +11,12 @@ if (isset($_GET['exit'])=='logout')
 		 exit;
 	 }
 ?>
-
-<?php
-	//добавление событий в базу
-	
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$title=$_POST['title']; 
-		$description=$_POST['description']; 
-		$date=$_POST['date']; 
-		$url_s=$_POST['url_s'];
-
-		$insert = "INSERT INTO events (title, description, date, url_s ) VALUES ('$title', '$description', '$date', '$url_s')";
-		mysqli_query($db, $insert) or die(mysqli_error($db));
-
-		header("Location: ".$_SERVER["REQUEST_URI"]);
-		exit;
-	}
-	
-?>
 <!doctype html>
 <html class="no-js">
 
 	<head>
 		<meta charset="utf-8"/>
-		<title>Освобождение</title>
+		<title>Административная панель</title>
 			
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -64,7 +46,46 @@ if (isset($_GET['exit'])=='logout')
 	<body lang="ru">
 	
 		<header>
-			
+		<div class="wrapper clearfix">
+					<div class="row">
+					<div class="col-md-2">
+						<div id="logo">
+							<a href="?page="><img  src="../img/logomin.png" alt="Simpler"></a>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<div id="menu" >
+							<nav class="navbar navbar-default">
+								<div class="container-fluid">
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<div class="navbar-header ">
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+										<a class="navbar-brand text-center" href="#">Меню</a>
+									</div>
+
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav navbar-right ">
+											<li class="<?php if($_GET['page']==''){echo 'current-menu-item';}?>"><a href="?page=">Календарь событий</a></li>
+											<li class="<?php if($_GET['page']=='admin_news'){echo 'current-menu-item';}?>"><a href="?page=admin_news">Новости</a></li>
+											<li class="<?php if($_GET['page']=='admin_photo'){echo 'current-menu-item';}?>"><a href="?page=admin_photo">Фото</a></li>
+											<li class="<?php if($_GET['page']=='admin_audio'){echo 'current-menu-item';}?>"><a href="?page=admin_audio">Аудио</a></li>
+											<li class="<?php if($_GET['page']=='admin_video'){echo 'current-menu-item';}?>"><a href="?page=admin_video">Видео</a></li>
+											<li class="<?php if($_GET['page']=='admin_1'){echo 'current-menu-item';}?>"><a href="?page=admin_1">...</a></li>
+											<li class="<?php if($_GET['page']=='admin_2'){echo 'current-menu-item';}?>"><a href="?page=admin_2">...</a></li>
+										</ul>
+									</div><!-- /.navbar-collapse -->
+								</div><!-- /.container-fluid -->
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
 		</header>
 		
 		
@@ -80,52 +101,27 @@ if (isset($_GET['exit'])=='logout')
 				
 	        	 <div class="home-block clearfix" >
 	        		<div class="clearfix" >
-						<div class="title">
-							<h3>Календарь событий</h3>
-						</div>	
+					
+					<?php
+                    $page = $_GET['page'];
+
+                    switch($page){
+                        case "admin_news": include "admin_news.php"; break;
+                        case "admin_photo": include "admin_photo.php"; break;
+                        case "admin_audio": include "admin_audio.php"; break;
+                        case "admin_video": include "admin_video.php"; break;
+                        case "admin_1": include "admin_1.php"; break;
+                        case "admin_2": include "admin_2.php"; break;
+						 default: include"admin_calendar.php";
+                    }
+                    ?>
+					
+			
 						<div class="row">
 							<div class="col-xs-12 col-md-12 "> 
-								<form class="form-horizontal" role="form" method="post">
-									<div class="form-group">
-										<label for="title" class="col-sm-2 control-label">Название события</label>
-										<div class="col-sm-10">
-										  <input name="title" type="text" class="form-control" id="title" placeholder="Введите название новости">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="description" class="col-sm-2 control-label">Текст события</label>
-										<div class="col-sm-10">
-											<textarea name="description" class="form-control" rows="3"></textarea>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="date" class="col-sm-2 control-label">Дата события</label>
-										<div class="col-sm-10">
-										  <input name="date" type="date" class="form-control" id="date" placeholder="Введите дату события">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="url_s" class="col-sm-2 control-label">Ссылка на событие</label>
-										<div class="col-sm-10">
-										  <input name="url_s" type="text" class="form-control" id="url_s" placeholder="Введите ссылку на событие">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-2 col-sm-8">
-										  <button type="submit" class="btn btn-default">Отправить</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-						
-		
-						<div class="title">
-							<h3></h3>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-md-12 "> 
-								<a href="auth.php?exit=logout">Выход</a>
+								<div class="title">
+									<button type="submit" class="btn btn-default"><a href="auth.php?exit=logout">Выход</a></button>
+								</div>
 							</div>
 						</div>
 					</div>

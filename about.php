@@ -180,11 +180,65 @@ $events = get_json($events);
 											</div>
 										</div>
 									</div>
-									<div class="col-xs-12 col-md-12">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-md-12">
 									<div class="title">
 										<h3>Состав группы</h3>
 									</div>
 								</div>
+								<div class="col-xs-12 col-md-12">
+									<div class="col-xs-12 col-md-4">
+										<div class="group_img">
+											<img src="img/kirika.png" alt="kirika" class="kirika"/>
+										</div>
+										<div class="group_title">
+											<h5>Наталья Кирика - тамбурин, бэк-вокал (+7 926 318 13 26, ns-kir@mail.ru )</h5>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-4">
+										<div class="group_img">
+											<img src="img/vladyka.png" alt="vladyka" class="vladyka"/>
+										</div>
+										<div class="group_title">
+											<h5>Александр Владыка - электроакустическая ритм-гитара YAMAHA/CRAFTER, вокал  (+7 926 353 61 91, avladyka@bk.ru)</h5>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-4">
+										<div class="group_img">
+											<img src="img/ivanova.png" alt="ivanova" class="ivanova"/>
+										</div>
+										<div class="group_title">
+											<h5>Софья Иванова (Paulina Steel) - фортепиано NORD2, бэк-вокал (+7 926 289 70 87, paulina_steel@mail.ru)</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-md-12">
+									<div class="col-xs-12 col-md-4">
+										<div class="group_img">
+											<img src="img/grachev.png" alt="grachev" class="grachev"/>
+										</div>
+										<div class="group_title">
+											<h5>Кирилл Грачёв - соло-гитара Fender Stratocaster (+7 926 254 24 10, Fixy@mail.ru)</h5>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-4">
+										<div class="group_img">
+											<img src="img/marohin.png" alt="marohin" class="marohin"/>
+										</div>
+										<div class="group_title">
+											<h5>Антон Марохин - бас-гитара марка Spector, модель ReBop4DLX ZebraWood (+7 916 563 60 07,t-o-xi4@yandex.ru)</h5>
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-4">
+										<div class="group_img">
+											<img src="img/samsonov.png" alt="samsonov" class="samsonov"/>
+										</div>
+										<div class="group_title">
+											<h5>Кирилл Самсонов - ударные ( +7 915 245 21 16, kirill.samsonov@gmail.com)</h5>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -203,7 +257,19 @@ $events = get_json($events);
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">Все права защищены</div>
+					<div class="left">
+						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
+						<ul>
+							<li>vk.com/avladyka</li> 
+							<li>facebook.com/iavladyka</li> 
+							<li>avladyka@bk.ru</li>
+						</ul>
+						<p>Над сайтом работали:</p>
+						<ul>
+							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
+							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
+						</ul>
+					</div>
 					<div class="right">
 						<ul id="social-bar">
 							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>

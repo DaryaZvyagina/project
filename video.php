@@ -149,8 +149,8 @@ $(document).ready(function(){
 											<li><a href="news.php">Новости</a></li>
 											<li><a href="sponsor.php">Спонсорам</a></li>
 											<li><a href="photo.php">Фото</a></li>
-											<li class="current-menu-item"><a href="audio.php">Аудио</a></li>
-											<li><a href="video.php">Видео</a></li>
+											<li><a href="audio.php">Аудио</a></li>
+											<li class="current-menu-item"><a href="video.php">Видео</a></li>
 										</ul>
 									</div><!-- /.navbar-collapse -->
 								</div><!-- /.container-fluid -->
@@ -169,7 +169,7 @@ $(document).ready(function(){
 			<div class="wrapper clearfix">
         		
 				<div class="masthead clearfix">
-					<h1>Аудио</h1>
+					<h1>Видео</h1>
 				</div>
 				<div class='mh-div'></div>
 				
@@ -178,7 +178,7 @@ $(document).ready(function(){
 							<div class="row">
 								<div class="col-xs-12 col-md-12">
 									<div class="title">
-										<h3>Посмотри видео с концерта и найди себя! А так де просто насладись нашими выступлениями</h3>
+										<h3>Посмотри видео с концерта и найди себя! А так же просто насладись нашими выступлениями</h3>
 									</div>
 								</div>
 								<div class="col-xs-12 col-md-6">
@@ -352,35 +352,42 @@ $(document).ready(function(){
 									  </div>
 									</div>
 								</div>
-								<div class="title">
-								<h3>Ты снимаешь концерты и хочешь набрать опыта на нашем выступлении? — Оставь заявку.</h3>
 							</div>
-							<div class="zayavka_form">
-								<form class="form-horizontal" role="form">
-								  <div class="form-group">
-									<label for="inputName" class="col-sm-2 control-label">ФИО</label>
-									<div class="col-sm-10">
-									  <input type="text" class="form-control" id="inputName" placeholder="ФИО">
+							<div class="row">
+								<div class="col-xs-12 col-md-12">
+									<div class="title">
+										<h3>Ты снимаешь концерты и хочешь набрать опыта на нашем выступлении? — Оставь заявку.</h3>
 									</div>
-								  </div>
-								  <div class="form-group">
-									<label for="inputTel" class="col-sm-2 control-label">Телефон</label>
-									<div class="col-sm-10">
-									  <input type="text" class="form-control" id="inputTel" placeholder="Телефон">
+								</div>
+								<div class="col-xs-12 col-md-12">
+									<div class="zayavka_form">
+										<form class="form-horizontal" role="form">
+									  <div class="form-group">
+										<label for="inputName" class="col-sm-2 control-label">ФИО</label>
+										<div class="col-sm-10">
+										  <input type="text" class="form-control" id="inputName" placeholder="ФИО">
+										</div>
+									  </div>
+									  <div class="form-group">
+										<label for="inputTel" class="col-sm-2 control-label">Телефон</label>
+										<div class="col-sm-10">
+										  <input type="text" class="form-control" id="inputTel" placeholder="Телефон">
+										</div>
+									  </div>
+									  <div class="form-group">
+										<label for="inputEmail3" class="col-sm-2 control-label">Твоя страница</label>
+										<div class="col-sm-10">
+										  <input type="email" class="form-control" id="inputEmail3" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
+										</div>
+									  </div>
+									  <div class="form-group">
+										<div class="col-sm-offset-2 col-sm-8">
+										  <button type="submit" class="btn btn-default">Отправить</button>
+										</div>
+									  </div>
+									</form>
 									</div>
-								  </div>
-								  <div class="form-group">
-									<label for="inputEmail3" class="col-sm-2 control-label">Твоя страница</label>
-									<div class="col-sm-10">
-									  <input type="email" class="form-control" id="inputEmail3" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
-									</div>
-								  </div>
-								  <div class="form-group">
-									<div class="col-sm-offset-2 col-sm-8">
-									  <button type="submit" class="btn btn-default">Отправить</button>
-									</div>
-								  </div>
-								</form>
+								</div>
 							</div>
 							</div>
 							
@@ -399,7 +406,19 @@ $(document).ready(function(){
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">Все права защищены</div>
+					<div class="left">
+						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
+						<ul>
+							<li>vk.com/avladyka</li> 
+							<li>facebook.com/iavladyka</li> 
+							<li>avladyka@bk.ru</li>
+						</ul>
+						<p>Над сайтом работали:</p>
+						<ul>
+							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
+							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
+						</ul>
+					</div>
 					<div class="right">
 						<ul id="social-bar">
 							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>

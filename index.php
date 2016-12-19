@@ -52,7 +52,7 @@ $events = get_json($events);
 		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 		
 		<!-- Flex Slider -->
-		<link rel="stylesheet" href="css/flexslider.css" >
+		<link rel="stylesheet" href="css/flexslider.css" />
 		<script src="js/jquery.flexslider-min.js"></script>
 		<!-- ENDS Flex Slider -->
 		
@@ -184,6 +184,8 @@ $events = get_json($events);
 												<p>ОСВОБОЖДЕНИЕ - Любовь до гроба</p>
 												<audio controls>
 													<source src="audio/Osvobojdenie-Love.mp3"/>
+													<source src="audio/IAmMachine.mp3"/>
+													<source src="audio/CarCrach.mp3"/>
 												</audio>
 											</div>
 										</div>
@@ -224,7 +226,19 @@ $events = get_json($events);
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">Все права защищены</div>
+					<div class="left">
+						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
+						<ul>
+							<li>vk.com/avladyka</li> 
+							<li>facebook.com/iavladyka</li> 
+							<li>avladyka@bk.ru</li>
+						</ul>
+						<p>Над сайтом работали:</p>
+						<ul>
+							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
+							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
+						</ul>
+					</div>
 					<div class="right">
 						<ul id="social-bar">
 							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>

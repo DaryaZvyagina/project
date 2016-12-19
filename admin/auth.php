@@ -57,14 +57,25 @@ $pass = '123123';
 	        		<div class="clearfix" >
 						<div class="row">
 							<div class="col-xs-12 col-md-12 "> 
-									<form action="" method="post"> 
-										<label for="name">Введите имя</label><br> 
-										<input type="text" name="name" placeholder="Введите логин"><br> 
-										<label for="pass">Введите пароль</label><br> 
-										<input type="password" name="pass" plaсeholder="Введите пароль"><br> 
-										<input type="submit" name="add"> 
-									</form> 
-								 
+									<form class="form-horizontal" role="form" method="post">
+									<div class="form-group">
+										<label for="name" class="col-sm-2 control-label">Введите имя</label>
+										<div class="col-sm-10">
+										  <input name="name" type="text" class="form-control" id="title" placeholder="Введите логин">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="pass" class="col-sm-2 control-label">Введите пароль</label>
+										<div class="col-sm-10">
+										  <input name="pass" type="password" class="form-control" id="title" placeholder="Введите пароль">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-2 col-sm-8">
+										  <button name="add" type="submit" class="btn btn-default">Войти</button>
+										</div>
+									</div>
+								</form>
 									<?php 
 
 										if(isset($_POST['add'])){ 
