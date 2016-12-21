@@ -1,22 +1,19 @@
-<?php 
-require_once 'config.php';
-?>
-
-
-<!doctype html>
-<html class="no-js">
-
-	<head>
-		<meta charset="utf-8"/>
-		<title>Освобождение</title>
-			
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Освобождение</title>
+	
+	
+	
+		
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<link rel="stylesheet" media="all" href="css/style.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->		
-		
+	
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	
@@ -32,12 +29,12 @@ require_once 'config.php';
 	<script  src="js/superfish-1.4.8/js/superfish.js"></script>
 	<script  src="js/superfish-1.4.8/js/supersubs.js"></script>
 	<!-- ENDS superfish -->
-		
+	
 	<!-- prettyPhoto -->
 	<script  src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
 	<link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css"  media="screen" />
 	<!-- ENDS prettyPhoto -->
-		
+	
 	<!-- poshytip -->
 	<link rel="stylesheet" href="js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />
 	<link rel="stylesheet" href="js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />
@@ -52,7 +49,6 @@ require_once 'config.php';
 	<script src="js/jquery.flexslider-min.js"></script>
 	<!-- ENDS Flex Slider -->
 	
-	
 	<!-- Less framework -->
 	<link rel="stylesheet" media="all" href="css/lessframework.css"/>
 	
@@ -61,53 +57,64 @@ require_once 'config.php';
 		
 	<!-- SKIN -->
 	<link rel="stylesheet" media="all" href="css/skin.css"/>
+	
+	<!-- Player -->
+	<script src="player/jquery.js"></script>
+	<script src="player/audio.js"></script>
+	
+	
+	
+	<script>
 		
-	<!-- Плеер-->
-	<link href="jPlayer-2.9.2/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="jPlayer-2.9.2/lib/jquery.min.js"></script>
-	<script type="text/javascript" src="jPlayer-2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
-	<script type="text/javascript" src="jPlayer-2.9.2/dist/add-on/jplayer.playlist.min.js"></script>
-	
-	<script type="text/javascript">
-	$(document).ready(function(){
+		  $(function() { 
+			// Setup the player to autoplay the next track
+			var a = audiojs.createAll({
+			  trackEnded: function() {
+				var next = $('ol li.playing').next();
+				if (!next.length) next = $('ol li').first();
+				next.addClass('playing').siblings().removeClass('playing');
+				audio.load($('a', next).attr('data-src'));
+				audio.play();
+			  }
+			});
+			
+			// Load in the first track
+			var audio = a[0];
+				first = $('ol a').attr('data-src');
+			$('ol li').first().addClass('playing');
+			audio.load(first);
 
-	new jPlayerPlaylist({
-		jPlayer: "#jquery_jplayer_1",
-		cssSelectorAncestor: "#jp_container_1"
-	}, [
-		{
-			title:"Любовь до гроба",
-			mp3:"audio/Osvobojdenie-Love.mp3",
-			oga:""
-		},
-		{
-			title:"Car Crach",
-			mp3:"audio/CarCrach.mp3",
-			oga:""
-		},
-		{
-			title:"I am Machine",
-			mp3:"audio/IAmMachine.mp3",
-			oga:""
-		}
-	], {
-		swfPath: "jPlayer-2.9.2/dist/jplayer",
-		supplied: "oga, mp3",
-		wmode: "window",
-		useStateClassSkin: true,
-		autoBlur: false,
-		smoothPlayBar: true,
-		keyEnabled: true
-	});
-});
-//]]>
-</script>
-	
-	</head>
-	
-	<body lang="ru">
-	
-		<header>
+			// Load in a track on click
+			$('ol li').click(function(e) {
+			  e.preventDefault();
+			  $(this).addClass('playing').siblings().removeClass('playing');
+			  audio.load($('a', this).attr('data-src'));
+			  audio.play();
+			});
+			// Keyboard shortcuts
+			$(document).keydown(function(e) {
+			  var unicode = e.charCode ? e.charCode : e.keyCode;
+				 // right arrow
+			  if (unicode == 39) {
+				var next = $('li.playing').next();
+				if (!next.length) next = $('ol li').first();
+				next.click();
+				// back arrow
+			  } else if (unicode == 37) {
+				var prev = $('li.playing').prev();
+				if (!prev.length) prev = $('ol li').last();
+				prev.click();
+				// spacebar
+			  } else if (unicode == 32) {
+				audio.playPause();
+			  }
+			})
+		  });
+		</script>
+  </head>
+  <body>
+  
+  <header>
 			<div class="wrapper clearfix">
 					<div class="row">
 					<div class="col-md-2">
@@ -149,72 +156,45 @@ require_once 'config.php';
 				</div>
 			</div>
 		</header>
-		
-		
-		
-		<!-- MAIN -->
-		<div id="main">	
+	  
+	  
+	 <div id="main">	
 		<div class="conteiner">
 			<div class="wrapper clearfix">
-        		
-				<div class="masthead clearfix">
-					<h1>Аудио</h1>
-				</div>
-				<div class='mh-div'></div>
-				
-	        	 <div class="home-block clearfix" >
+					<div class="masthead clearfix">
+						<h1>Аудио</h1>
+					</div>
+					<div class='mh-div'></div>
+					
+					
+	        	<div class="home-block clearfix" >
 	        		<div class="clearfix" >
-							<div class="row">
-								<div class="col-xs-12 col-md-12">
-									<div class="title">
-										<h3>Предлагаем тебе послушать весь наш репертуар от А до Я</h3>
-									</div>
+					
+						<div class="row">
+							<div class="col-xs-12 col-md-12">
+								<div class="title">
+									<h3>Предлагаем тебе послушать весь наш репертуар от А до Я</h3>
 								</div>
-								<div class="col-xs-12 col-md-6">
-									<div id="player_audio">
-										<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-										<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-											<div class="jp-type-playlist">
-												<div class="jp-gui jp-interface">
-													<div class="div_play_control">
-														<div class="jp-controls">
-															<button class="jp-previous" role="button" tabindex="0">previous</button>
-															<button class="jp-play" role="button" tabindex="0">play</button>
-															<button class="jp-next" role="button" tabindex="0">next</button>
-															<button class="jp-stop" role="button" tabindex="0">stop</button>
-														</div>
-														<div class="jp-progress">
-															<div class="jp-seek-bar">
-																<div class="jp-play-bar"></div>
-															</div>
-														</div>
-														<div class="jp-volume-controls">
-															<button class="jp-mute" role="button" tabindex="0">mute</button>
-															<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-															<div class="jp-volume-bar">
-																<div class="jp-volume-bar-value"></div>
-															</div>
-														</div>
-														<div class="jp-time-holder">
-															<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-															<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-														</div>
-														<div class="jp-toggles">
-															<button class="jp-repeat" role="button" tabindex="0">repeat</button>
-															<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
-														</div>
-													</div>
-												</div>
-												<div class="jp-playlist">
-													<ul>
-														<li>&nbsp;</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
+							</div>
+							<div class="col-xs-12 col-md-6">
+								<div id="player">
+								  <div class="audiojs " classname="audiojs" id="audiojs_wrapper0"><audio preload="" src="http://kolber.github.io/audiojs/demos/mp3/01-dead-wrong-intro.mp3"></audio>          <div class="play-pause">             <p class="play"></p>             <p class="pause"></p>             <p class="loading"></p>             <p class="error"></p>           </div>           <div class="scrubber">             <div class="progress" style="width: 0px;"></div>             <div class="loaded" style="width: 280px;"></div>           </div>           <div class="time">             <em class="played">00:00</em>/<strong class="duration">03:57</strong>           </div>           <div class="error-message"></div></div>
+								  <ol>
+									<li class="playing"><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/01-dead-wrong-intro.mp3">мертвы неправильно интро</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/02-juicy-r.mp3">сочно-р</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/03-its-all-about-the-crystalizabeths.mp3">все дело в crystalizabeths</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/04-islands-is-the-limit.mp3">островов это предел</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/05-one-more-chance-for-a-heart-to-skip-a-beat.mp3">еще один шанс, чтобы сердце замирало</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/06-suicidal-fantasy.mp3">суицидальные фантазии</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/07-everyday-shelter.mp3">каждый день приют</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/08-basic-hypnosis.mp3">основная гипноз</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/09-infinite-victory.mp3">бесконечные победы</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">любопытный инцидент Биг паппа в ночное время</a></li>
+									<li><a href="http://kolber.github.io/audiojs/demos/test6.html#" data-src="http://kolber.github.io/audiojs/demos/mp3/11-mo-stars-mo-problems.mp3">МО Из МО проблемы</a></li>
+								  </ol>
 								</div>
-								<div class="col-xs-12 col-md-6">
+							</div>
+							<div class="col-xs-12 col-md-6">
 									<div class="title">
 										<h4>Интересные факты</h4>
 									</div>
@@ -339,42 +319,25 @@ require_once 'config.php';
 										<h4><a href="#">Подробнее</a></h4>
 									</div>
 								</div>
-							</div>
-							
+						</div>
 					</div>
 				</div>
 			</div>
-			</div>
 		</div>
-		</div>
-		<!-- ENDS MAIN -->
-		
-		
-		<footer>	
+	</div>
+	
+	<footer>	
 			
 			<div class="wrapper clearfix">
 				
 				<!-- bottom -->
 				<div class="footer-bottom">
-					<div class="left">
-						<p>Контакты АЛЕКСАНДРА ВЛАДЫКИ:</p>
-						<ul>
-							<li>vk.com/avladyka</li> 
-							<li>facebook.com/iavladyka</li> 
-							<li>avladyka@bk.ru</li>
-						</ul>
-						<p>Над сайтом работали:</p>
-						<ul>
-							<li>Разработчик: <a href="https://vk.com/dashenkazv">Звягина Дарья</a></li>
-							<li>Дизайнер и копирайтер: <a href="https://vk.com/lizaandreevna">Лазбаникова Елизавета</a></li>
-						</ul>
-					</div>
+					<div class="left">Все права защищены</div>
 					<div class="right">
 						<ul id="social-bar">
-							<li><a href="https://www.facebook.com/svobodamusic/?fref=ts" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
-							<li><a href="" class="poshytip"><img src="img/social/instagram.png"  alt="instagram" /></a></li>
-							<li><a href="https://vk.com/svobodamusic" class="poshytip"><img src="img/social/vkontakte.png" alt="vkontakte" /></a></li>
-							<li><a href="https://www.youtube.com/channel/UCaooa3NGq7ADEZdfyHmvBbw" class="poshytip"><img src="img/social/youtube.png" alt="youtube" /></a></li>
+							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
+							<li><a href="" title="Follow my tweets" class="poshytip"><img src="img/social/twitter.png"  alt="twitter" /></a></li>
+							<li><a href=""  title="Add to the circle" class="poshytip"><img src="img/social/plus.png" alt="Google plus" /></a></li>
 						</ul>
 					</div>
 				</div>	
@@ -383,7 +346,7 @@ require_once 'config.php';
 			</div>
 		</footer>
 		
-			 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="js/bootstrap.min.js"></script>
@@ -391,13 +354,6 @@ require_once 'config.php';
 			<script src="http://code.jquery.com/jquery.min.js"></script>
 			<script src="js/moment.js"></script>
 			<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
-			
-			
-	</body>
-	
+
+</body>
 </html>
-
-
-
-
-

@@ -154,7 +154,7 @@ require_once 'config.php';
 													</div>
 												</div>
 												<div class="feature-image">
-														<img src="'.$img_news.'" alt="Alt text" />
+														<img src="./img/img_news/'.$img_news.'" alt="Alt text" />
 												</div>
 												<div class="excerpt">
 													<p>

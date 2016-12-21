@@ -127,7 +127,6 @@ require_once 'config.php';
 	        	<div class="home-block clearfix" >
 	        		<div  id="posts-list" class="clearfix" >
 						<?php
-						$i = 0;
 								//Вывод записи из базы данных
 								$id_news = $_GET["id_news"];
 								$select = "SELECT id, date_news, title_news, author_news, img_news, description_news, text_news FROM news WHERE id=".$id_news;
@@ -157,7 +156,7 @@ require_once 'config.php';
 													</div>
 												</div>
 												<div class="feature-image">
-														<img src="'.$img_news.'" alt="Alt text" />
+														<img src="./img/img_news/'.$img_news.'" alt="Alt text" />
 												</div>
 												<div class="excerpt">
 													<p>
@@ -207,22 +206,16 @@ require_once 'config.php';
 								
 								echo "<div class=\"user_comment\">";
 									while($row = mysqli_fetch_assoc($result_comment)){
-										$i++;
 										$name = $row['name'];
 										$comment = $row['comment'];
 
 										echo '
-											<div class="col-xs-12 col-md-4">
-											
-											</div>
+										<div class="row">
 											<div class="col-xs-12 col-md-8">
-												<div class="col-xs-12 col-md-12">
 													<h4>'.$name.'</h4>
-												</div>
-												<div class="col-xs-12 col-md-12">
 													<p>'.$comment.'</p>
-												</div>
 											</div>
+										</div>
 										';
 										
 									}

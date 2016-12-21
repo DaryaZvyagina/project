@@ -179,28 +179,11 @@ $events = get_json($events);
 											</div>
 										</div>
 										<div class="col-xs-12 col-md-12 "> 
-											<?php
-												//Вывод записи из базы данных
-												$select_single = "SELECT id, title_single, file_single FROM single ORDER BY `id` DESC LIMIT 0,1";
-												$result_single = mysqli_query($db, $select_single) or die(mysqli_error($db));
-												
-												
-												echo '<div class="audio">';
-													while($row = mysqli_fetch_assoc($result_single)){
-														$title_single = $row['title_single'];
-														$file_single = $row['file_single'];
-
-														echo '
-															<h3>Послушайте наш новый сингл! Ждем ваших отзывов</h3>
-															<p>'.$title_single.'</p>
-															<audio controls>
-																<source src="'.$file_single.'"/>
-															</audio>
-														';
-														
-													}
-												echo '</div>';
-											?>
+											<h3>Послушайте наш новый сингл! Ждем ваших отзывов</h3>
+											<p>Освобождение - любовь до гроба</p>
+											<audio controls>
+												<source src="audio/Osvobojdenie-Love.mp3"/>
+											</audio>
 										</div>
 									</div> 
 									<div class="col-xs-12 col-md-4">
