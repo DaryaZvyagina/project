@@ -8,15 +8,20 @@
 		//Получаем картинку из формы
 		$tmp = $_FILES['img_gallery']['tmp_name'];
 		$img_gallery = $_FILES['img_gallery']['name'];
-		$img = "img/".$img_gallery;
 		
-		move_uploaded_file($tmp, 'img/'.$img_gallery);
 		
 		//Переносим картинку в созданную папку категории
 		
 		$insert = "INSERT INTO photo_gallery (img_gallery) 
 		VALUES ('$img_gallery')";
 		mysqli_query($db, $insert) or die(mysqli_error($db));
+		 
+		if (move_uploaded_file($_FILES['img_gallery']['tmp_name'], __DIR__.'/../img/img_photo/'. $_FILES["img_gallery"]['name'])) {
+			echo "Uploaded";
+			echo  __DIR__.'/img/img_photo/'. $_FILES["img_gallery"]['name'];
+		} else {
+		   echo "File was not uploaded";
+		}
 			  
 		header("Location: ".$_SERVER["REQUEST_URI"]);
 		exit;

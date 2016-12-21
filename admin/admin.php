@@ -103,8 +103,11 @@ if (isset($_GET['exit'])=='logout')
 	        		<div class="clearfix" >
 					
 					<?php
-                    $page = $_GET['page'];
-
+                    if (isset($_GET['page']))
+						$page = $_GET['page'];
+					else
+						$page = "";
+					
                     switch($page){
                         case "admin_news": include "admin_news.php"; break;
                         case "admin_photo": include "admin_photo.php"; break;

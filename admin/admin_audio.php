@@ -2,32 +2,37 @@
 	
 	
 	//добавление новостей в базу
-
+	//error_reporting(0);
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$title_audio=$_POST['title_audio']; 
-		$file_audio_mp3=$_POST['file_audio_mp3']; 
-		$file_audio_oga=$_POST['file_audio_oga'];
-		
-		//Получаем аудио из формы
-		$tmp = $_FILES['file_audio_mp3']['tmp_name'];
-		$tmp = $_FILES['file_audio_oga']['tmp_name'];
 		
 		$file_audio_mp3 = $_FILES['file_audio_mp3']['name'];
 		$file_audio_oga = $_FILES['file_audio_oga']['name'];
 		
-		$file_mp3 = "audio/".$file_audio_mp3;
-		$file_oga = "audio/".$file_audio_oga;
 
 		//Переносим картинку в созданную папку категории
-		move_uploaded_file($tmp, 'audio/'.$file_audio_mp3);
-		move_uploaded_file($tmp, 'audio/'.$file_audio_oga);
+		
 		
 		$insert = "INSERT INTO audio (title_audio, file_audio_mp3, file_audio_oga) 
 		VALUES ('$title_audio', '$file_audio_mp3', '$file_audio_oga')";
 		mysqli_query($db, $insert) or die(mysqli_error($db));
-			  
-		header("Location: ".$_SERVER["REQUEST_URI"]);
-		exit;
+			
+		if (move_uploaded_file($_FILES['file_audio_mp3']['tmp_name'], __DIR__.'/../audio/'.$_FILES["file_audio_mp3"]['name'])) {
+			echo "Uploaded";
+			echo  __DIR__.'/audio/'. $_FILES["file_audio_mp3"]['name'];
+		} else {
+		   echo "File was not uploaded";
+		}
+		
+		if (move_uploaded_file($_FILES['file_audio_oga']['tmp_name'], __DIR__.'/../audio/'.$_FILES["file_audio_oga"]['name'])) {
+			echo "Uploaded";
+			echo  __DIR__.'/audio/'. $_FILES["file_audio_oga"]['name'];
+		} else {
+		   echo "File was not uploaded";
+		}
+			
+	//	header("Location: ".$_SERVER["REQUEST_URI"]);
+		//exit;
 	}
 ?>
 
@@ -91,7 +96,7 @@ echo "<table class=\"table\">";
         $get = $_SERVER['REQUEST_URI'].'&del='.$id;
 
         echo "<tr>";
-            echo "<td>".$title_single."</td>";
+            echo "<td>".$title_audio."</td>";
             echo "<td>".$file_audio_mp3."</td>";
             echo "<td>".$file_audio_oga."</td>";
             echo "<td><a href='".$get."'><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a></td>";

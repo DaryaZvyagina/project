@@ -13,16 +13,25 @@
 		//Получаем картинку из формы
 		$tmp = $_FILES['img_news']['tmp_name'];
 		$img_news = $_FILES['img_news']['name'];
-		$img = "img/".$img_news;
+
+
 		
-		move_uploaded_file($tmp, 'img/'.$img_news);
+		
 		
 		//Переносим картинку в созданную папку категории
 		
 		$insert = "INSERT INTO news (date_news, title_news, author_news, img_news, description_news, text_news ) 
-		VALUES ('$date_news', '$title_news', '$author_news', '$img', '$description_news', '$text_news')";
+		VALUES ('$date_news', '$title_news', '$author_news', '$img_news', '$description_news', '$text_news')";
 		mysqli_query($db, $insert) or die(mysqli_error($db));
-			  
+
+		
+		if (move_uploaded_file($_FILES['img_news']['tmp_name'], __DIR__.'/../img/img_news/'. $_FILES["img_news"]['name'])) {
+			echo "Uploaded";
+			echo  __DIR__.'/img/img_news/'. $_FILES["img_news"]['name'];
+		} else {
+		   echo "File was not uploaded";
+		}
+				  
 		header("Location: ".$_SERVER["REQUEST_URI"]);
 		exit;
 	}
