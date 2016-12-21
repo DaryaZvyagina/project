@@ -179,15 +179,28 @@ $events = get_json($events);
 											</div>
 										</div>
 										<div class="col-xs-12 col-md-12 "> 
-											<div class="audio">
-												<h3>Послушайте наш новый сингл! Ждем ваших отзывов</h3>
-												<p>ОСВОБОЖДЕНИЕ - Любовь до гроба</p>
-												<audio controls>
-													<source src="audio/Osvobojdenie-Love.mp3"/>
-													<source src="audio/IAmMachine.mp3"/>
-													<source src="audio/CarCrach.mp3"/>
-												</audio>
-											</div>
+											<?php
+												//Вывод записи из базы данных
+												$select_single = "SELECT id, title_single, file_single FROM single ORDER BY `id` DESC LIMIT 0,1";
+												$result_single = mysqli_query($db, $select_single) or die(mysqli_error($db));
+												
+												
+												echo '<div class="audio">';
+													while($row = mysqli_fetch_assoc($result_single)){
+														$title_single = $row['title_single'];
+														$file_single = $row['file_single'];
+
+														echo '
+															<h3>Послушайте наш новый сингл! Ждем ваших отзывов</h3>
+															<p>'.$title_single.'</p>
+															<audio controls>
+																<source src="'.$file_single.'"/>
+															</audio>
+														';
+														
+													}
+												echo '</div>';
+											?>
 										</div>
 									</div> 
 									<div class="col-xs-12 col-md-4">
@@ -241,9 +254,10 @@ $events = get_json($events);
 					</div>
 					<div class="right">
 						<ul id="social-bar">
-							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
-							<li><a href="" title="Follow my tweets" class="poshytip"><img src="img/social/twitter.png"  alt="twitter" /></a></li>
-							<li><a href=""  title="Add to the circle" class="poshytip"><img src="img/social/plus.png" alt="Google plus" /></a></li>
+							<li><a href="https://www.facebook.com/svobodamusic/?fref=ts" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
+							<li><a href="" class="poshytip"><img src="img/social/instagram.png"  alt="instagram" /></a></li>
+							<li><a href="https://vk.com/svobodamusic" class="poshytip"><img src="img/social/vkontakte.png" alt="vkontakte" /></a></li>
+							<li><a href="https://www.youtube.com/channel/UCaooa3NGq7ADEZdfyHmvBbw" class="poshytip"><img src="img/social/youtube.png" alt="youtube" /></a></li>
 						</ul>
 					</div>
 				</div>	

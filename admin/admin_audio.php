@@ -15,8 +15,8 @@
 		$file_audio_mp3 = $_FILES['file_audio_mp3']['name'];
 		$file_audio_oga = $_FILES['file_audio_oga']['name'];
 		
-		$file_audio_mp3 = "audio/".$file_audio_mp3;
-		$file_audio_oga = "audio/".$file_audio_oga;
+		$file_mp3 = "audio/".$file_audio_mp3;
+		$file_oga = "audio/".$file_audio_oga;
 
 		//Переносим картинку в созданную папку категории
 		move_uploaded_file($tmp, 'audio/'.$file_audio_mp3);
@@ -32,7 +32,7 @@
 ?>
 
 						<div class="title">
-							<h3>Аудио</h3>
+							<h3>Добавить аудио</h3>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-md-12 "> 
@@ -40,7 +40,7 @@
 									<div class="form-group">
 										<label for="title_audio" class="col-sm-2 control-label">Название</label>
 										<div class="col-sm-10">
-											<input name="title_audio" type="text" class="form-control" id="title_audio" placeholder="Введите название новости">
+											<input name="title_audio" type="text" class="form-control" id="title_audio" placeholder="Введите название аудио">
 										</div>
 									</div>
 									<div class="form-group">
@@ -63,3 +63,39 @@
 								</form>
 							</div>
 						</div>
+						<div class="title">
+							<h3>Список аудио</h3>
+						</div>
+<?php
+	//Удалить запись в базе данных
+if(isset($_GET['del'])){
+    $get_del = abs((int)$_GET['del']);
+
+    if($get_del){
+        $delete = "DELETE FROM audio WHERE id = ".$get_del;
+        mysqli_query($db, $delete) or die(mysqli_error($db));
+    }
+}
+
+//Вывод записи из базы данных
+$select = "SELECT id, title_audio, file_audio_mp3, file_audio_oga FROM audio";
+$result = mysqli_query($db, $select) or die(mysqli_error($db));
+
+echo "<table class=\"table\">";
+    echo "<tr><th>Название</th><th>Файл mp3</th><th>Файл oga</th><th>Удалить</th></tr>";
+    while($row = mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+        $title_audio = $row['title_audio'];
+        $file_audio_mp3 = $row['file_audio_mp3'];
+        $file_audio_oga = $row['file_audio_oga'];
+        $get = $_SERVER['REQUEST_URI'].'&del='.$id;
+
+        echo "<tr>";
+            echo "<td>".$title_single."</td>";
+            echo "<td>".$file_audio_mp3."</td>";
+            echo "<td>".$file_audio_oga."</td>";
+            echo "<td><a href='".$get."'><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a></td>";
+        echo "</tr>";
+    }
+echo "</table>";
+?>

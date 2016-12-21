@@ -113,16 +113,17 @@ require_once 'config.php';
 									<div class="col-xs-12 col-md-12">
 										<div class="col-xs-12 col-md-6"> 
 											<div class="sponsor_text">
-												<p>Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров.</p>
-												<p>Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров.</p>
-												<p>Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров.</p>
-												<p>Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров.</p>
-												<p>Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров. Супер текст для привлечения спонсоров.</p>
+												<p>С чего бы начать? А начнем мы с краткого обзора нашей группы. Мы в мире шоу бизнеса с 2014 года, и уже записали студийный альбом, размещенный на  iTunes, Google Play и в других магазинах.</p>
+												<p>Мы не стоим на месте! Мы развиваемся, растем и побеждаем! Число людей на наших концертах значительно прибавляется, соответственно и площадок больше, и концертов. За год мы одержали победу на рок-фестивале МАМИ (сейчас Московский Политехнический университет), вошли в ТОП-100 фестиваля Metro on Stage, набрав более 700 голосов, являемся официальным участником Международного рок-фестиваля EMERGENZA в Москве. </p>
+												<p>Проведено (за период с октября 2015 по декабрь 2016) 15 больших концертов группы «Освобождение» и 10 сольных Александра Владыки на таких крупных площадках, как:Privet Bar, Рассольников, Муми Кафе, Амбар, Glastonberry, Рок-Хаус, МЬЮЗ, Lookin Rooms, Китайский летчик Джао Да. Скоро будет в клубе "Москва" (Moscow Hall).</p>
+												<p>И все бы хорошо, но нам не хватает людей( Мы собираем команду, которая будет помогать нам организовывать концерты и зарабатывать на них. Нам нужен человек который будет продвигать нас, который будет нас организовывать, давать свои указания, ругать и хвалить!))</p>
+												<p>Группа «Освобождение» надеется, что именно вы станете с нами сотрудничать и приведете к грандиозному успеху!</p>
 											</div>
 										</div>
 										<div class="col-xs-12 col-md-6 "> 
 											<div class="sponsor_img_right">
 												<img src="img/sponsor.jpg" alt="sponsor_img_right" class="sponsor_img_right"/>
+												<img src="img/sponsor-1.jpg" alt="sponsor_img_right" class="sponsor_img_right"/>
 											</div>
 										</div>
 									</div> 
@@ -135,7 +136,7 @@ require_once 'config.php';
 									</div>
 									<div class="col-xs-12 col-md-3">
 										<div class="sponsor_img_left">
-											<img src="img/safonov.jpg" alt="safonov" class="safonov"/>
+											<img src="img/safonov.png" alt="safonov" class="safonov"/>
 										</div>
 										<div class="sponsor_title">
 											<h5>Василий Сафонов - фотограф группы (+7 196 007 3873, lutearishi@gmail.com)</h5>
@@ -143,7 +144,7 @@ require_once 'config.php';
 									</div>
 									<div class="col-xs-12 col-md-3">
 										<div class="sponsor_img_left">
-											<img src="img/kislyakova.jpg" alt="kislyakova" class="kislyakova"/>
+											<img src="img/kislyakova.png" alt="kislyakova" class="kislyakova"/>
 										</div>
 										<div class="sponsor_title">
 											<h5>Василиса Кислякова - видеограф группы <a href="https://www.facebook.com/Sssiamsa?fref=ts)">( страничка Facebook)</a></h5>
@@ -151,7 +152,7 @@ require_once 'config.php';
 									</div>
 									<div class="col-xs-12 col-md-3">
 										<div class="sponsor_img_left">
-											<img src="img/golybkov.jpg" alt="kislyakova" class="kislyakova"/>
+											<img src="img/golybkov.png" alt="kislyakova" class="kislyakova"/>
 										</div>
 										<div class="sponsor_title">
 											<h5>Иван Голубков - дизайн афиш (golubkov.pmi@gmail.com)</h5>
@@ -159,7 +160,7 @@ require_once 'config.php';
 									</div>
 									<div class="col-xs-12 col-md-3">
 										<div class="sponsor_img_left">
-											<img src="img/elagin.jpg" alt="kislyakova" class="kislyakova"/>
+											<img src="img/elagin.png" alt="kislyakova" class="kislyakova"/>
 										</div>
 										<div class="sponsor_title">
 											<h5>Артём Елагин - дизайн афиш (ikorgik@me.com)</h5>
@@ -188,7 +189,6 @@ require_once 'config.php';
 												<img src="img/microfone.png" />
 											 </div>
 										</div>
-										
 									</div>
 								</div>
 								<div class="row">
@@ -256,9 +256,10 @@ require_once 'config.php';
 					</div>
 					<div class="right">
 						<ul id="social-bar">
-							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
-							<li><a href="" title="Follow my tweets" class="poshytip"><img src="img/social/twitter.png"  alt="twitter" /></a></li>
-							<li><a href=""  title="Add to the circle" class="poshytip"><img src="img/social/plus.png" alt="Google plus" /></a></li>
+							<li><a href="https://www.facebook.com/svobodamusic/?fref=ts" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
+							<li><a href="" class="poshytip"><img src="img/social/instagram.png"  alt="instagram" /></a></li>
+							<li><a href="https://vk.com/svobodamusic" class="poshytip"><img src="img/social/vkontakte.png" alt="vkontakte" /></a></li>
+							<li><a href="https://www.youtube.com/channel/UCaooa3NGq7ADEZdfyHmvBbw" class="poshytip"><img src="img/social/youtube.png" alt="youtube" /></a></li>
 						</ul>
 					</div>
 				</div>	

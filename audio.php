@@ -161,7 +161,7 @@ require_once 'config.php';
 									</div>
 								</div>
 								<div class="col-xs-12 col-md-6">
-									<div id="player">
+									<div id="player_audio">
 										<div id="jquery_jplayer_1" class="jp-jplayer"></div>
 										<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
 											<div class="jp-type-playlist">
@@ -194,40 +194,6 @@ require_once 'config.php';
 															<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
 														</div>
 													</div>
-													<!-- <ul class="ul_play_control">
-														<li>
-															<div class="jp-controls">
-																<button class="jp-previous" role="button" tabindex="0">previous</button>
-																<button class="jp-play" role="button" tabindex="0">play</button>
-																<button class="jp-next" role="button" tabindex="0">next</button>
-																<button class="jp-stop" role="button" tabindex="0">stop</button>
-															</div>
-														</li>
-														<li>
-															<div class="jp-progress">
-																<div class="jp-seek-bar">
-																	<div class="jp-play-bar"></div>
-																</div>
-															</div>
-															<div class="jp-time-holder">
-																<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-																<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-															</div>
-														</li>
-														<li>
-															<div class="jp-volume-controls">
-																<button class="jp-mute" role="button" tabindex="0">mute</button>
-																<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-																<div class="jp-volume-bar">
-																	<div class="jp-volume-bar-value"></div>
-																</div>
-															</div>
-															<div class="jp-toggles">
-																<button class="jp-repeat" role="button" tabindex="0">repeat</button>
-																<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
-															</div>
-														</li>
-													</ul> -->
 												</div>
 												<div class="jp-playlist">
 													<ul>
@@ -395,9 +361,10 @@ require_once 'config.php';
 					</div>
 					<div class="right">
 						<ul id="social-bar">
-							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
-							<li><a href="" title="Follow my tweets" class="poshytip"><img src="img/social/twitter.png"  alt="twitter" /></a></li>
-							<li><a href=""  title="Add to the circle" class="poshytip"><img src="img/social/plus.png" alt="Google plus" /></a></li>
+							<li><a href="https://www.facebook.com/svobodamusic/?fref=ts" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
+							<li><a href="" class="poshytip"><img src="img/social/instagram.png"  alt="instagram" /></a></li>
+							<li><a href="https://vk.com/svobodamusic" class="poshytip"><img src="img/social/vkontakte.png" alt="vkontakte" /></a></li>
+							<li><a href="https://www.youtube.com/channel/UCaooa3NGq7ADEZdfyHmvBbw" class="poshytip"><img src="img/social/youtube.png" alt="youtube" /></a></li>
 						</ul>
 					</div>
 				</div>	

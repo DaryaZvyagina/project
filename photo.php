@@ -136,35 +136,6 @@ require_once 'config.php';
 				
 	        	 <div class="home-block clearfix" >
 	        		<div class="clearfix" >
-						<?php
-							// $sql = "SELECT * FROM `photo_gallery`"; 
-							// $result = mysqli_query($db,$sql); 
-
-							// while($user = mysqli_fetch_assoc($result)) { 
-						
-							// for($i=0; $i<5; $i++){
-							// echo '
-							// <div class="row'.+ $i.'" > 
-								// <div class="col-xs-12 col-md-8">
-									// <div class="col-xs-12 col-md-12">
-										// <img src="'.$user['img'].'">
-									// </div>
-									// <div class="col-xs-12 col-md-12 "> 
-									// </div>
-								// </div> 
-								// <div class="col-xs-12 col-md-4">
-									// <div class="col-xs-12 col-md-12 ">
-									// </div> 
-									// <div class="col-xs-12 col-md-12 "> 
-									// </div>
-									// <div class="col-xs-12 col-md-12 ">
-									// </div> 
-								// </div> 
-							// </div>';
-							// }
-							// } 
-							 ?>
-							
 							<div class="row"> 
 								<div class="col-xs-12 col-md-8">
 									<div class="col-xs-12 col-md-12"> 
@@ -268,37 +239,54 @@ require_once 'config.php';
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-md-12">
+								<!--Тут будет пагинация -->
+									<?php
+									  // $count = 5;// Количество записей на странице
+									  // $page = $_GET["page"];// Узнаём номер страницы
+									  // $shift = $count * ($page - 1);// Смещение в LIMIT. Те записи, порядковый номер которого больше этого числа, будут выводиться.
+									  // $select = "SELECT id, img_gallery FROM photo_gallery LIMIT $shift, $count";
+									  // $result = mysqli_query($db, $select) or die(mysqli_error($db));// Делаем выборку $count записей, начиная с $shift + 1.
+									  // /* Выводим результат */
+									   // while($row = mysqli_fetch_assoc($result)) {
+										// print_r($row);
+										// echo "<br />";
+									  // }
+									?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-md-12">
 									<div class="title">
 										<h3>Ты снимаешь концерты и хочешь набрать опыта на нашем выступлении? — Оставь заявку.</h3>
 									</div>
 								</div>
 								<div class="col-xs-12 col-md-12">
 									<div class="zayavka_form">
-										<form class="form-horizontal" role="form">
-									  <div class="form-group">
-										<label for="inputName" class="col-sm-2 control-label">ФИО</label>
-										<div class="col-sm-10">
-										  <input type="text" class="form-control" id="inputName" placeholder="ФИО">
-										</div>
-									  </div>
-									  <div class="form-group">
-										<label for="inputTel" class="col-sm-2 control-label">Телефон</label>
-										<div class="col-sm-10">
-										  <input type="text" class="form-control" id="inputTel" placeholder="Телефон">
-										</div>
-									  </div>
-									  <div class="form-group">
-										<label for="inputEmail3" class="col-sm-2 control-label">Твоя страница</label>
-										<div class="col-sm-10">
-										  <input type="email" class="form-control" id="inputEmail3" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
-										</div>
-									  </div>
-									  <div class="form-group">
-										<div class="col-sm-offset-2 col-sm-8">
-										  <button type="submit" class="btn btn-default">Отправить</button>
-										</div>
-									  </div>
-									</form>
+										<form class="form-horizontal" role="form" method="post" action="zayavka_save.php">
+										  <div class="form-group">
+											<label for="name_user" class="col-sm-2 control-label">ФИО</label>
+											<div class="col-sm-10">
+											  <input name="name_user"  type="text" class="form-control" id="name_user" placeholder="ФИО">
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label for="tel_user" class="col-sm-2 control-label">Телефон</label>
+											<div class="col-sm-10">
+											  <input name="tel_user" type="text" class="form-control" id="tel_user" placeholder="Телефон">
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label for="site_user" class="col-sm-2 control-label">Твоя страница</label>
+											<div class="col-sm-10">
+											  <input name="site_user" type="text" class="form-control" id="site_user" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
+											</div>
+										  </div>
+										  <div class="form-group">
+											<div class="col-sm-offset-2 col-sm-8">
+											  <button type="submit" class="btn btn-default">Отправить</button>
+											</div>
+										  </div>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -333,9 +321,10 @@ require_once 'config.php';
 					</div>
 					<div class="right">
 						<ul id="social-bar">
-							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
-							<li><a href="" title="Follow my tweets" class="poshytip"><img src="img/social/twitter.png"  alt="twitter" /></a></li>
-							<li><a href=""  title="Add to the circle" class="poshytip"><img src="img/social/plus.png" alt="Google plus" /></a></li>
+							<li><a href="https://www.facebook.com/svobodamusic/?fref=ts" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
+							<li><a href="" class="poshytip"><img src="img/social/instagram.png"  alt="instagram" /></a></li>
+							<li><a href="https://vk.com/svobodamusic" class="poshytip"><img src="img/social/vkontakte.png" alt="vkontakte" /></a></li>
+							<li><a href="https://www.youtube.com/channel/UCaooa3NGq7ADEZdfyHmvBbw" class="poshytip"><img src="img/social/youtube.png" alt="youtube" /></a></li>
 						</ul>
 					</div>
 				</div>	

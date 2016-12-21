@@ -81,29 +81,23 @@ $(document).ready(function(){
 			artist:"Blender Foundation",
 			free:true,
 			m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
-			ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
-			webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
 			poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 		},
 		{
 			title:"Finding Nemo Teaser",
 			artist:"Pixar",
 			m4v: "http://www.jplayer.org/video/m4v/Finding_Nemo_Teaser.m4v",
-			ogv: "http://www.jplayer.org/video/ogv/Finding_Nemo_Teaser.ogv",
-			webmv: "http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm",
 			poster: "http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png"
 		},
 		{
 			title:"Incredibles Teaser",
 			artist:"Pixar",
 			m4v: "http://www.jplayer.org/video/m4v/Incredibles_Teaser.m4v",
-			ogv: "http://www.jplayer.org/video/ogv/Incredibles_Teaser.ogv",
-			webmv: "http://www.jplayer.org/video/webm/Incredibles_Teaser.webm",
 			poster: "http://www.jplayer.org/video/poster/Incredibles_Teaser_640x272.png"
 		}
 	], {
 		swfPath: "jPlayer-2.9.2/dist/jplayer",
-		supplied: "webmv, ogv, m4v",
+		supplied: "ogv, m4v",
 		useStateClassSkin: true,
 		autoBlur: false,
 		smoothPlayBar: true,
@@ -182,7 +176,7 @@ $(document).ready(function(){
 									</div>
 								</div>
 								<div class="col-xs-12 col-md-6">
-									<div id="player">
+									<div id="player_video">
 										<div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player">
 											<div class="jp-type-playlist">
 												<div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -361,31 +355,31 @@ $(document).ready(function(){
 								</div>
 								<div class="col-xs-12 col-md-12">
 									<div class="zayavka_form">
-										<form class="form-horizontal" role="form">
-									  <div class="form-group">
-										<label for="inputName" class="col-sm-2 control-label">ФИО</label>
-										<div class="col-sm-10">
-										  <input type="text" class="form-control" id="inputName" placeholder="ФИО">
-										</div>
-									  </div>
-									  <div class="form-group">
-										<label for="inputTel" class="col-sm-2 control-label">Телефон</label>
-										<div class="col-sm-10">
-										  <input type="text" class="form-control" id="inputTel" placeholder="Телефон">
-										</div>
-									  </div>
-									  <div class="form-group">
-										<label for="inputEmail3" class="col-sm-2 control-label">Твоя страница</label>
-										<div class="col-sm-10">
-										  <input type="email" class="form-control" id="inputEmail3" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
-										</div>
-									  </div>
-									  <div class="form-group">
-										<div class="col-sm-offset-2 col-sm-8">
-										  <button type="submit" class="btn btn-default">Отправить</button>
-										</div>
-									  </div>
-									</form>
+										<form class="form-horizontal" role="form" method="post" action="zayavka_save.php">
+										  <div class="form-group">
+											<label for="name_user" class="col-sm-2 control-label">ФИО</label>
+											<div class="col-sm-10">
+											  <input name="name_user"  type="text" class="form-control" id="name_user" placeholder="ФИО">
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label for="tel_user" class="col-sm-2 control-label">Телефон</label>
+											<div class="col-sm-10">
+											  <input name="tel_user" type="text" class="form-control" id="tel_user" placeholder="Телефон">
+											</div>
+										  </div>
+										  <div class="form-group">
+											<label for="site_user" class="col-sm-2 control-label">Твоя страница</label>
+											<div class="col-sm-10">
+											  <input name="site_user" type="text" class="form-control" id="site_user" placeholder="Адрес страницы с работами: VKontakte/Facebook/Site">
+											</div>
+										  </div>
+										  <div class="form-group">
+											<div class="col-sm-offset-2 col-sm-8">
+											  <button type="submit" class="btn btn-default">Отправить</button>
+											</div>
+										  </div>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -421,9 +415,10 @@ $(document).ready(function(){
 					</div>
 					<div class="right">
 						<ul id="social-bar">
-							<li><a href=""  title="Become a fan" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
-							<li><a href="" title="Follow my tweets" class="poshytip"><img src="img/social/twitter.png"  alt="twitter" /></a></li>
-							<li><a href=""  title="Add to the circle" class="poshytip"><img src="img/social/plus.png" alt="Google plus" /></a></li>
+							<li><a href="https://www.facebook.com/svobodamusic/?fref=ts" class="poshytip"><img src="img/social/facebook.png"  alt="Facebook" /></a></li>
+							<li><a href="" class="poshytip"><img src="img/social/instagram.png"  alt="instagram" /></a></li>
+							<li><a href="https://vk.com/svobodamusic" class="poshytip"><img src="img/social/vkontakte.png" alt="vkontakte" /></a></li>
+							<li><a href="https://www.youtube.com/channel/UCaooa3NGq7ADEZdfyHmvBbw" class="poshytip"><img src="img/social/youtube.png" alt="youtube" /></a></li>
 						</ul>
 					</div>
 				</div>	

@@ -76,8 +76,8 @@ if (isset($_GET['exit'])=='logout')
 											<li class="<?php if($_GET['page']=='admin_photo'){echo 'current-menu-item';}?>"><a href="?page=admin_photo">Фото</a></li>
 											<li class="<?php if($_GET['page']=='admin_audio'){echo 'current-menu-item';}?>"><a href="?page=admin_audio">Аудио</a></li>
 											<li class="<?php if($_GET['page']=='admin_video'){echo 'current-menu-item';}?>"><a href="?page=admin_video">Видео</a></li>
-											<li class="<?php if($_GET['page']=='admin_1'){echo 'current-menu-item';}?>"><a href="?page=admin_1">...</a></li>
-											<li class="<?php if($_GET['page']=='admin_2'){echo 'current-menu-item';}?>"><a href="?page=admin_2">...</a></li>
+											<li class="<?php if($_GET['page']=='admin_single'){echo 'current-menu-item';}?>"><a href="?page=admin_single">Сингл</a></li>
+											<li class="<?php if($_GET['page']=='admin_zayavka'){echo 'current-menu-item';}?>"><a href="?page=admin_zayavka">Формы заявки</a></li>
 										</ul>
 									</div><!-- /.navbar-collapse -->
 								</div><!-- /.container-fluid -->
@@ -110,8 +110,8 @@ if (isset($_GET['exit'])=='logout')
                         case "admin_photo": include "admin_photo.php"; break;
                         case "admin_audio": include "admin_audio.php"; break;
                         case "admin_video": include "admin_video.php"; break;
-                        case "admin_1": include "admin_1.php"; break;
-                        case "admin_2": include "admin_2.php"; break;
+                        case "admin_single": include "admin_single.php"; break;
+                        case "admin_zayavka": include "admin_zayavka.php"; break;
 						 default: include"admin_calendar.php";
                     }
                     ?>

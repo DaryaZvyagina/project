@@ -17,7 +17,7 @@
 ?>
 
 						<div class="title">
-							<h3>Календарь событий</h3>
+							<h3>Добавить событие в календарь</h3>
 						</div>	
 						<div class="row">
 							<div class="col-xs-12 col-md-12 "> 
@@ -54,4 +54,42 @@
 								</form>
 							</div>
 						</div>
+						<div class="title">
+							<h3>Список событий</h3>
+						</div>
 						
+<?php
+	//Удалить запись в базе данных
+if(isset($_GET['del'])){
+    $get_del = abs((int)$_GET['del']);
+
+    if($get_del){
+        $delete = "DELETE FROM events WHERE id = ".$get_del;
+        mysqli_query($db, $delete) or die(mysqli_error($db));
+    }
+}
+
+//Вывод записи из базы данных
+$select = "SELECT id, title, description, date, url_s FROM events";
+$result = mysqli_query($db, $select) or die(mysqli_error($db));
+
+echo "<table class=\"table\">";
+    echo "<tr><th>Дата</th><th>Название</th><th>Краткое описание</th><th>Ссылка</th><th>Удалить</th></tr>";
+    while($row = mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+        $date = $row['date'];
+        $title = $row['title'];
+        $description = $row['description'];
+        $url_s = $row['url_s'];
+        $get = $_SERVER['REQUEST_URI'].'&del='.$id;
+
+        echo "<tr>";
+            echo "<td>".$date."</td>";
+            echo "<td>".$title."</td>";
+            echo "<td>".$description."</td>";
+            echo "<td>".$url_s."</td>";
+            echo "<td><a href='".$get."'><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a></td>";
+        echo "</tr>";
+    }
+echo "</table>";
+?>
